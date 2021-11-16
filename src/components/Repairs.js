@@ -11,15 +11,6 @@ export const Repairs = () => {
         <>
         <h1>Honey Rae's Repair Shop</h1>
         <CustomerList />
-
-        {
-            /* .map converting items to convert items from an array to HTML */
-            customers.map(
-                (customerObject) => { 
-                    return <h2>(customerObject.name)</h2>
-                }
-            )
-        }
         </>
     )
 }
