@@ -1,7 +1,4 @@
-import React, {
-    useEffect,
-    useState
-} from "react"
+import React, {useEffect, useState} from "react"
 
 export const TicketList = () => {
     const [tickets, setTicketList] = useState([])
@@ -9,10 +6,10 @@ export const TicketList = () => {
 
     useEffect(
         () => {
-            fetch("http:localhost:8088/serviceTickets")
-                .then(res => res.json())
-                .then((data) => {
-                    setTicketList(data)
+            fetch("http:localhost:8088/serviceTickets?_expand=employee&_expand=customer")
+                .then(response => response.json())
+                .then((data1) => {
+                    setTicketList(data1)
                 })
 
         },
@@ -21,22 +18,30 @@ export const TicketList = () => {
 
     useEffect(
         () => {
-            updateTotalTicketMessage(`You have ${tickets.length} customers.`)
+            updateTotalTicketMessage(`You have ${tickets.length} tickets in the backlog.`)
         },
         [tickets]
     )
 
     return ( 
     <>
-        <
-        div > {
-            totalTicketMessage
-        } </div> {
-        tickets.map(
-            (ticketObject) => {
-                return <p key = {`ticket--${ticketObject.id}`}>
-                    <ul > {ticketObject.description} 
-                </ul> </p>
+        <div> {totalTicketMessage} </div> 
+        {
+            
+    
+        tickets.map((ticketObject) => {
+
+                return (
+                <div>
+                <p key = {`ticket--${ticketObject.id}`}>
+                    <ul>
+                    <li>
+                    {ticketObject.description}
+                    </li>
+                </ul> 
+                </p>
+                </div>
+                )
                 }
         )
         
