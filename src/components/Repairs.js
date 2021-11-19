@@ -1,5 +1,6 @@
 import { CustomerList } from "./customers/CustomerList"
 import { EmployeeList } from "./EmployeesList"
+import { TicketList } from "./ticketList/TicketList"
 
 /* State is stored directly in the application file */
 /* const [customers, assignCustomers] is called a deconstruction array */
@@ -15,6 +16,8 @@ export const Repairs = () => {
         <CustomerList />
         <h2>Employee List</h2>
         <EmployeeList />
+        <h2> Ticket Backlog</h2>
+        <TicketList />
         </>
     )
 }
